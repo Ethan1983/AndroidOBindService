@@ -15,7 +15,8 @@ class ToastReceiver : BroadcastReceiver() {
 
             if( WORK_AROUND_ANDROID_O_BACKGROUND_LIMITATION ) {
 
-                context.applicationContext.bindService( serviceIntent, ToastServiceConnection(), Context.BIND_AUTO_CREATE )
+                val ctx = if( DYNAMIC_REGISTERED_RECEIVER ) context else context.applicationContext
+                ctx.bindService( serviceIntent, ToastServiceConnection(), Context.BIND_AUTO_CREATE )
 
             } else {
 

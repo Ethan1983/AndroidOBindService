@@ -31,7 +31,14 @@ class ToastService : Service() {
 
         startOperation()
 
+        Log.d( TAG, "onStartCommand" )
+
         return super.onStartCommand(intent, flags, startId)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d( TAG, "onDestroy" )
     }
 
     fun startOperation() {
